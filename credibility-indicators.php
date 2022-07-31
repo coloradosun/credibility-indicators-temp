@@ -1,26 +1,23 @@
 <?php
 /**
- * Plugin Name:       Credibility Indicators
- * Description:       Example static block scaffolded with Create Block tool.
- * Requires at least: 5.9
- * Requires PHP:      7.0
- * Version:           0.1.0
- * Author:            The WordPress Contributors
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       credibility-indicators
+ * Plugin Name: Credibility Indicators
+ * Description: Signals for readers to gauge credibility for an article.
+ * Version:     alpha
+ * Author:      James W Burke
+ * Text Domain: credibility-indicators
  *
- * @package           create-block
+ * @package     credibility-indicators
  */
 
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function create_block_credibility_indicators_block_init() {
-	register_block_type( __DIR__ . '/build' );
-}
-add_action( 'init', 'create_block_credibility_indicators_block_init' );
+namespace Credibility_Indicators;
+
+define( 'CREDIBILITY_INDICATORS_PATH', dirname( __FILE__ ) );
+define( 'CREDIBILITY_INDICATORS_URL', plugin_dir_url( __FILE__ ) );
+
+// Includes.
+require_once CREDIBILITY_INDICATORS_PATH . '/class-credibility-indicators.php';
+
+// // Bootstrap actions.
+add_action( 'init', [ Credibility_Indicators::class, 'register_block' ] );
+add_action( 'init', [ Credibility_Indicators::class, 'register_meta' ] );
+add_action( 'init', [ Credibility_Indicators::class, 'register_rest_field' ] );

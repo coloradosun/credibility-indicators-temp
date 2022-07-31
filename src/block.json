@@ -1,12 +1,13 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/credibility-indicators",
+	"name": "credibility-indicators/credibility-indicators",
 	"version": "0.1.0",
 	"title": "Credibility Indicators",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example static block scaffolded with Create Block tool.",
+	"icon": "flag",
+	"description": "Signals for readers to gauge credibility for an article.",
+	"attributes": {},
 	"supports": {
 		"html": false
 	},
