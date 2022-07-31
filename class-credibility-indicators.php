@@ -143,6 +143,48 @@ class Credibility_Indicators {
 	 * @return string
 	 */
 	public static function render_block() {
-        return get_the_ID();
+
+		$selected_indicators    = get_post_meta( get_the_ID(), 'credibility_indicators', true );
+		$credibility_indicators = self::get_indicators();
+
+		// Assemble and return markup.
+		$markup = '';
+
+		// Open list.
+		$markup .= '<ul>';
+
+		// Loop through each indicator available.
+		foreach( $credibility_indicators as $credibility_indicator ) {
+
+			// Destructure indicator.
+			$label       = $credibility_indicator['label'] ?? '';
+			$description = $credibility_indicator['description'] ?? '';
+			$slug        = $credibility_indicator['slug'] ?? '';
+
+			// Is this indicator active for this output context?
+			$has_indicator = wp_validate_boolean( $selected_indicators[ $slug ] ?? false );
+
+			// For now, skip the indicator displaying. We need to style this thing still.
+			if ( ! $has_indicator ) {
+				continue;
+			}
+
+			/**
+			 * List item markup.
+			 *
+			 * Displays as: {Credibility} - {Description}
+			 */
+			$markup .= '<li>';
+			$markup .= sprintf(
+				'<strong>%1$s</strong> - %2$s',
+				esc_html( $credibility_indicator[ 'label' ] ),
+				esc_html( $credibility_indicator[ 'description' ] ),
+				esc_html( $credibility_indicator[ 'slug' ] ),
+			);
+			$markup .= '</li>';
+		}
+		$markup .= '</ul>';
+
+		return $markup;
 	}
 };
