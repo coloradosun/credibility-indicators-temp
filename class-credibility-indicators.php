@@ -148,10 +148,7 @@ class Credibility_Indicators {
 		$credibility_indicators = self::get_indicators();
 
 		// Assemble and return markup.
-		$markup = '';
-
-		// Open list.
-		$markup .= '<ul>';
+		$list_items_markup = '';
 
 		// Loop through each indicator available.
 		foreach( $credibility_indicators as $credibility_indicator ) {
@@ -174,17 +171,22 @@ class Credibility_Indicators {
 			 *
 			 * Displays as: {Credibility} - {Description}
 			 */
-			$markup .= '<li>';
-			$markup .= sprintf(
+			$list_items_markup .= '<li>';
+			$list_items_markup .= sprintf(
 				'<strong>%1$s</strong> - %2$s',
 				esc_html( $credibility_indicator[ 'label' ] ),
 				esc_html( $credibility_indicator[ 'description' ] ),
 				esc_html( $credibility_indicator[ 'slug' ] ),
 			);
-			$markup .= '</li>';
+			$list_items_markup .= '</li>';
 		}
-		$markup .= '</ul>';
 
-		return $markup;
+		// If we didn't encounter any valid indicators, we may not have any
+		// markup.
+		if ( empty( $list_items_markup ) ) {
+			return '';
+		}
+
+		return '<ul>' . $list_items_markup . '</ul>';
 	}
 };

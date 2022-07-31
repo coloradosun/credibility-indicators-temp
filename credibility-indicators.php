@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Credibility Indicators
  * Description: Signals for readers to gauge credibility for an article.
- * Version:     alpha
+ * Version:     1.0.0
  * Author:      James W Burke
  * Text Domain: credibility-indicators
  *

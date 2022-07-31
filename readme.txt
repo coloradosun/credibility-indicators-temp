@@ -1,6 +1,7 @@
 === Credibility Indicators ===
 Contributors: jameswalterburke
 Tags: credibility indicators
+Version: 1.0.0
 
 Signals for readers to gauge credibility for an article.
 

@@ -1,9 +1,8 @@
 {
 	"name": "credibility-indicators",
-	"version": "0.1.0",
-	"description": "Example static block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
-	"license": "GPL-2.0-or-later",
+	"version": "1.0.0",
+	"description": "Signals for readers to gauge credibility for an article.",
+	"author": "jameswalterburke",
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-readme-to-md && wp-scripts build",

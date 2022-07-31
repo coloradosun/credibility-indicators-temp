@@ -45,8 +45,6 @@ const CredibilityIndicatorsPanel = () => {
 		...meta.credibility_indicators,
 	};
 
-	console.log( 'all meta', meta );
-
 	return(
 		<PluginDocumentSettingPanel
 			title={ __( 'Credibility Indicators', 'credibility-indicators' ) }
@@ -59,12 +57,15 @@ const CredibilityIndicatorsPanel = () => {
 					help={ description }
 					checked={ selectedIndicators[ slug ] }
 					onChange={ () => {
-						setMeta({
+						const newMeta = {
 							...meta,
-							...selectedIndicators,
-							[ slug ]: ! selectedIndicators[ slug ],
-							what: 'testing',
-						});
+							credibility_indicators: {
+								...selectedIndicators,
+								[ slug ]: ! selectedIndicators[ slug ],
+							},
+						};
+
+						setMeta( newMeta );
 					} }
 				/>
 			) ) }
