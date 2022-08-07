@@ -130,11 +130,11 @@ class Credibility_Indicators {
 	 */
 	public static function register_block() {
 		register_block_type(
-	        CREDIBILITY_INDICATORS_PATH . '/build',
-	        [
-	            'render_callback' => [ Credibility_Indicators::class, 'render_block' ]
-	        ]
-	    );
+			CREDIBILITY_INDICATORS_PATH . '/build',
+			[
+				'render_callback' => [ Credibility_Indicators::class, 'render_block' ]
+			]
+		);
 	}
 
 	/**
