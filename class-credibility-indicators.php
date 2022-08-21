@@ -22,23 +22,27 @@ class Credibility_Indicators {
 		$default_indicators = [
 			[
 				'description' => __( 'This article contains new, firsthand information uncovered by its reporter(s). This includes directly interviewing sources and research / analysis of primary source documents.', 'credibility-indicators' ),
-				'label'         => __( 'Original Reporting', 'credibility-indicators' ),
-				'slug'          => 'original_reporting',
+				'label'       => __( 'Original Reporting', 'credibility-indicators' ),
+				'slug'        => 'original_reporting',
+				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/original-reporting.svg' ),
 			],
 			[
 				'description' => __( 'Indicates that a Newsmaker/Newsmakers was/were physically present to report the article from some/all of the location(s) it concerns.', 'credibility-indicators' ),
-				'label'         => __( 'On the Ground', 'credibility-indicators' ),
-				'slug'          => 'on_the_ground',
+				'label'       => __( 'On the Ground', 'credibility-indicators' ),
+				'slug'        => 'on_the_ground',
+				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/on-the-ground.svg' ),
 			],
 			[
-				'description' => __( 'As a news piece, this article cites verifiable, third-party sources which have all been thoroughly fact-checked and deemed credible by the Newsroom in accordance with the Civil Constitution.', 'credibility-indicators' ),
-				'label'         => __( 'Sources Cited', 'credibility-indicators' ),
-				'slug'          => 'sources_cited',
+				'description' => __( 'As a news piece, this article cites verifiable, third-party sources which have all been thoroughly fact-checked and deemed credible by the Newsroom in accordance with the Civil Constitution.', 'sources-cited.svg' ),
+				'label'       => __( 'Sources Cited', 'credibility-indicators' ),
+				'slug'        => 'sources_cited',
+				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/sources-cited.svg' ),
 			],
 			[
 				'description' => __( 'This Newsmaker has been deemed by this Newsroom as having a specialized knowledge of the subject covered in this article.', 'credibility-indicators' ),
-				'label'         => __( 'Subject Specialist', 'credibility-indicators' ),
-				'slug'          => 'subject_specialist',
+				'label'       => __( 'Subject Specialist', 'credibility-indicators' ),
+				'slug'        => 'subject_specialist',
+				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/subject-specialist.svg' ),
 			],
 		];
 
@@ -148,7 +152,29 @@ class Credibility_Indicators {
 		$credibility_indicators = self::get_indicators();
 
 		// Assemble and return markup.
-		$list_items_markup = '';
+		$indicators_closed_markup = '';
+		$indicators_open_markup   = '';
+
+		$wp_kses_for_svgs = [
+			'g'    => [
+				'fill'            => [],
+				'fill-rule'       => [],
+				'stroke'          => [],
+				'stroke-linecap'  => [],
+				'stroke-linejoin' => [],
+			],
+			'path' => [
+				'd'         => [],
+				'fill'      => [],
+				'fill-rule' => [],
+			],
+			'svg'  => [
+				'height'  => [],
+				// 'viewBox' => [],
+				'width'   => [],
+				'xmlns'   => [],
+			],
+		];
 
 		// Loop through each indicator available.
 		foreach( $credibility_indicators as $credibility_indicator ) {
@@ -167,26 +193,76 @@ class Credibility_Indicators {
 			}
 
 			/**
-			 * List item markup.
+			 * Indicator closed markup.
 			 *
 			 * Displays as: {Credibility} - {Description}
 			 */
-			$list_items_markup .= '<li>';
-			$list_items_markup .= sprintf(
-				'<strong>%1$s</strong> - %2$s',
+			$indicators_closed_markup .= '<li>';
+			$indicators_closed_markup .= sprintf(
+				'%2$s <span>%1$s</span>',
+				esc_html( $credibility_indicator[ 'label' ] ),
+				wp_kses( $credibility_indicator[ 'icon' ], $wp_kses_for_svgs ),
+			);
+			$indicators_closed_markup .= '</li>';
+
+			/**
+			 * Indicators open markup.
+			 *
+			 * Displays as: {Credibility} - {Description}
+			 */
+			$indicators_open_markup .= '<tr>';
+
+			$row_markup = '
+<td class="credibility-indicators__open__icon">%1$s</td>
+<td class="credibility-indicators__open__label">%2$s</td>
+<td class="credibility-indicators__open__description">%3$s</td>
+			';
+
+			$indicators_open_markup .= sprintf(
+				$row_markup,
+				wp_kses( $credibility_indicator[ 'icon' ], $wp_kses_for_svgs ),
 				esc_html( $credibility_indicator[ 'label' ] ),
 				esc_html( $credibility_indicator[ 'description' ] ),
-				esc_html( $credibility_indicator[ 'slug' ] ),
 			);
-			$list_items_markup .= '</li>';
+			$indicators_open_markup .= '</tr>';
 		}
 
 		// If we didn't encounter any valid indicators, we may not have any
 		// markup.
-		if ( empty( $list_items_markup ) ) {
+		if ( empty( $indicators_closed_markup ) || empty( $indicators_open_markup ) ) {
 			return '';
 		}
 
-		return '<ul>' . $list_items_markup . '</ul>';
+		$label = __( 'Credibility:', 'credibility-indicators' );
+
+return <<<EOT
+<div class="credibility-indicators__wrapper">
+	<div class="credibility-indicators__closed">
+		<h4 class="credibility-indicators__closed__label">$label</h4>
+		<ul>$indicators_closed_markup</ul>
+	</div>
+	<div class="credibility-indicators__open">
+		<table>$indicators_open_markup</table>
+	</div>
+</div>
+EOT;
+	}
+
+	function enqueue_frontend_assets() {
+		// Styles.
+		wp_enqueue_style(
+			'credibility-indicators-styles',
+			CREDIBILITY_INDICATORS_URL . 'build/frontend.css',
+			[],
+			filemtime( CREDIBILITY_INDICATORS_PATH . 'build/frontend.css' )
+		);
+
+		// Script.
+		wp_enqueue_script(
+			'credibility-indicators-script',
+			CREDIBILITY_INDICATORS_URL . 'build/frontend.js',
+			[],
+			filemtime( CREDIBILITY_INDICATORS_PATH . 'build/frontend.js' )
+		);
 	}
 };

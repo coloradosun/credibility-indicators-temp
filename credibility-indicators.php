@@ -21,3 +21,4 @@ require_once CREDIBILITY_INDICATORS_PATH . '/class-credibility-indicators.php';
 add_action( 'init', [ Credibility_Indicators::class, 'register_block' ] );
 add_action( 'init', [ Credibility_Indicators::class, 'register_meta' ] );
 add_action( 'init', [ Credibility_Indicators::class, 'register_rest_field' ] );
+add_action( 'wp_enqueue_scripts', [ Credibility_Indicators::class, 'enqueue_frontend_assets' ] );

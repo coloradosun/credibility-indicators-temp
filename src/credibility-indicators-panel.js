@@ -1,9 +1,14 @@
 // Dependencies.
 import { __ } from '@wordpress/i18n';
-import { CheckboxControl } from '@wordpress/components';
-import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
-import { select, useSelect } from '@wordpress/data';
+import {
+	CheckboxControl,
+	Flex,
+	FlexItem,
+	Tooltip,
+} from '@wordpress/components';
 import { useEntityProp } from '@wordpress/core-data';
+import { select, useSelect } from '@wordpress/data';
+import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { useState } from '@wordpress/element';
 
 /**
@@ -48,13 +53,11 @@ const CredibilityIndicatorsPanel = () => {
 	return(
 		<PluginDocumentSettingPanel
 			title={ __( 'Credibility Indicators', 'credibility-indicators' ) }
-			icon={ false }
 		>
-			{ allCredibilityIndicators.map( ( { description, label, slug } ) => (
+			{ allCredibilityIndicators.map( ( { description, label, slug, icon } ) => (
 				<CheckboxControl
 					key={ slug }
 					label={ label }
-					help={ description }
 					checked={ selectedIndicators[ slug ] }
 					onChange={ () => {
 						const newMeta = {

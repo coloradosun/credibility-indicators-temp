@@ -1,0 +1,66 @@
+.credibility-indicators {
+
+	&__wrapper {
+	}
+
+	&__closed {
+		align-items: center;
+		display: flex;
+
+		.credibility-indicators__closed__label {
+			font-size: 16px;
+			font-weight: bold;
+			margin: 0.5rem 1rem 0.5rem 0;
+			padding: 0;
+		}
+
+		ul {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: flex-start;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				align-items: center;
+				display: flex;
+
+				svg {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	&__open {
+		// display: none;
+
+		table {
+
+			tr {
+
+				td {
+					border: none;
+				}
+
+				.credibility-indicators__open__icon {
+
+				}
+
+				.credibility-indicators__open__label {
+					font-size: 16px;
+					font-weight: bold;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+
+				.credibility-indicators__open__description {
+					word-break: normal;
+				}
+			}
+		}
+	}
+}

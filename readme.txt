@@ -1,5 +1,5 @@
 === Credibility Indicators ===
-Contributors: jameswalterburke
+Contributors: thecoloradosun, jameswalterburke
 Tags: credibility indicators
 Version: 1.0.0
 

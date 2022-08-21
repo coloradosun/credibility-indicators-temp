@@ -1,5 +1,5 @@
 # Credibility Indicators #
-**Contributors:** [jameswalterburke](https://profiles.wordpress.org/jameswalterburke/)  
+**Contributors:** [thecoloradosun](https://profiles.wordpress.org/thecoloradosun/), [jameswalterburke](https://profiles.wordpress.org/jameswalterburke/)  
 **Tags:** credibility indicators  
 **Version:** 1.0.0  
 

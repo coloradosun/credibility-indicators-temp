@@ -2,7 +2,7 @@
 	"name": "credibility-indicators",
 	"version": "1.0.0",
 	"description": "Signals for readers to gauge credibility for an article.",
-	"author": "jameswalterburke",
+	"author": "thecoloradosun, jameswalterburke",
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-readme-to-md && wp-scripts build",
