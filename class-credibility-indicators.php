@@ -248,13 +248,16 @@ return <<<EOT
 EOT;
 	}
 
-	function enqueue_frontend_assets() {
+	/**
+	 * Enqueue frontend assets.
+	 */
+	public static function enqueue_frontend_assets() {
 		// Styles.
 		wp_enqueue_style(
 			'credibility-indicators-styles',
 			CREDIBILITY_INDICATORS_URL . 'build/frontend.css',
 			[],
-			filemtime( CREDIBILITY_INDICATORS_PATH . 'build/frontend.css' )
+			filemtime( CREDIBILITY_INDICATORS_PATH . '/build/frontend.css' )
 		);
 
 		// Script.
@@ -262,7 +265,7 @@ EOT;
 			'credibility-indicators-script',
 			CREDIBILITY_INDICATORS_URL . 'build/frontend.js',
 			[],
-			filemtime( CREDIBILITY_INDICATORS_PATH . 'build/frontend.js' )
+			filemtime( CREDIBILITY_INDICATORS_PATH . '/build/frontend.js' )
 		);
 	}
 };
