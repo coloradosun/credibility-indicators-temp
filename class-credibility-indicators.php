@@ -21,25 +21,25 @@ class Credibility_Indicators {
 	public static function get_indicators(): array {
 		$default_indicators = [
 			[
-				'description' => __( 'This article contains new, firsthand information uncovered by its reporter(s). This includes directly interviewing sources and research / analysis of primary source documents.', 'credibility-indicators' ),
+				'description' => __( 'This article contains firsthand information gathered by reporters. This includes directly interviewing sources and analyzing primary source documents.', 'credibility-indicators' ),
 				'label'       => __( 'Original Reporting', 'credibility-indicators' ),
 				'slug'        => 'original_reporting',
 				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/original-reporting.svg' ),
 			],
 			[
-				'description' => __( 'Indicates that a Newsmaker/Newsmakers was/were physically present to report the article from some/all of the location(s) it concerns.', 'credibility-indicators' ),
+				'description' => __( 'A journalist was physically present to report the article from some or all of the locations it concerns.', 'credibility-indicators' ),
 				'label'       => __( 'On the Ground', 'credibility-indicators' ),
 				'slug'        => 'on_the_ground',
 				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/on-the-ground.svg' ),
 			],
 			[
-				'description' => __( 'As a news piece, this article cites verifiable, third-party sources which have all been thoroughly fact-checked and deemed credible by the Newsroom in accordance with the Civil Constitution.', 'sources-cited.svg' ),
-				'label'       => __( 'Sources Cited', 'credibility-indicators' ),
+				'description' => __( 'This article includes a list of source material, including documents and people, so you can follow the story further.', 'sources-cited.svg' ),
+				'label'       => __( 'References', 'credibility-indicators' ),
 				'slug'        => 'sources_cited',
 				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/sources-cited.svg' ),
 			],
 			[
-				'description' => __( 'This Newsmaker has been deemed by this Newsroom as having a specialized knowledge of the subject covered in this article.', 'credibility-indicators' ),
+				'description' => __( 'The journalist and/or newsroom have/has a deep knowledge of the topic, location or community group covered in this article.', 'credibility-indicators' ),
 				'label'       => __( 'Subject Specialist', 'credibility-indicators' ),
 				'slug'        => 'subject_specialist',
 				'icon'        => file_get_contents( CREDIBILITY_INDICATORS_PATH . '/assets/svg/subject-specialist.svg' ),
