@@ -233,13 +233,13 @@ class Credibility_Indicators {
 			return '';
 		}
 
-		$label = __( 'THE TRUST PROJECT', 'credibility-indicators' );
+		$label = __( 'The Trust Project', 'credibility-indicators' );
 
 return <<<EOT
 <div class="credibility-indicators__wrapper">
 	<div class="credibility-indicators__closed">
 		<ul>$indicators_closed_markup</ul>
-		<h4 class="credibility-indicators__closed__label">$label</h4>
+		<h4 class="credibility-indicators__closed__label" a href="https://coloradosun.com/editorial-standards-and-policies/">$label</h4>
 	</div>
 	<div class="credibility-indicators__open">
 		<table>$indicators_open_markup</table>
