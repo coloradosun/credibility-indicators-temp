@@ -1,6 +1,6 @@
 {
 	"name": "credibility-indicators",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Signals for readers to gauge credibility for an article.",
 	"author": "thecoloradosun, jameswalterburke",
 	"main": "build/index.js",
