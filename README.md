@@ -1,7 +1,7 @@
 # Credibility Indicators #
 **Contributors:** [thecoloradosun](https://profiles.wordpress.org/thecoloradosun/), [jameswalterburke](https://profiles.wordpress.org/jameswalterburke/)  
 **Tags:** credibility indicators  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 
 Signals for readers to gauge credibility for an article.
 
