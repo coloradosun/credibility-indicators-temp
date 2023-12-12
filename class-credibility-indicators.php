@@ -233,13 +233,13 @@ class Credibility_Indicators {
 			return '';
 		}
 
-		$label = __( 'Credibility:', 'credibility-indicators' );
+		$label = __( 'THE TRUST PROJECT', 'credibility-indicators' );
 
 return <<<EOT
 <div class="credibility-indicators__wrapper">
 	<div class="credibility-indicators__closed">
-		<h4 class="credibility-indicators__closed__label">$label</h4>
 		<ul>$indicators_closed_markup</ul>
+		<h4 class="credibility-indicators__closed__label">$label</h4>
 	</div>
 	<div class="credibility-indicators__open">
 		<table>$indicators_open_markup</table>
