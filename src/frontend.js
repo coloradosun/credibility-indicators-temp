@@ -7,7 +7,7 @@ import './styles.scss';
 const registerIndicatorUI = () => {
 
     // Get and loop all indicators.
-    const indicators = document.getElementsByClassName( 'credibility-indicators__wrapper' );
+    const indicators = document.getElementsByClassName( 'credibility-indicators__innerwrapper' );
     Array.from( indicators ).forEach( ( indicatorWrapper ) => {
 
         // Find closed and open wrappers.

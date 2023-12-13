@@ -239,7 +239,7 @@ return <<<EOT
 <div class="credibility-indicators__wrapper">
 	<div class="credibility-indicators__closed">
 		<ul>$indicators_closed_markup</ul>
-		<h4 class="credibility-indicators__closed__label"><a href="https://coloradosun.com/editorial-standards-and-policies/">$label</a></h4>
+		<h4 class="credibility-indicators__closed__label"><a href="https://coloradosun.com/editorial-standards-and-policies/" target="_blank">$label</a></h4>
 	</div>
 	<div class="credibility-indicators__open">
 		<table>$indicators_open_markup</table>
